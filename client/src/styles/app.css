@@ -1,0 +1,108 @@
+/* Typography & Base */
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background-color: #f0f4f8;
+  color: #1f2937;
+}
+
+main {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+}
+
+/* Navbar */
+nav {
+  background-color: #ffffff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid #e5e7eb;
+}
+
+nav a {
+  text-decoration: none;
+  color: #2563eb;
+  font-weight: 600;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+nav a:hover {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+/* Headings */
+h1, h2 {
+  color: #1e3a8a;
+}
+
+/* Form Wrapper */
+form {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Form Inputs */
+input, select, textarea {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  transition: border 0.2s ease;
+  background-color: #f9fafb;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #3b82f6;
+  outline: none;
+  background-color: #fff;
+}
+
+/* Buttons */
+button {
+  padding: 0.75rem;
+  background-color: #0ea5e9;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background-color: #0284c7;
+}
+
+button:disabled {
+  background-color: #7dd3fc;
+  cursor: not-allowed;
+}
+
+/* Error + Success Messages */
+.error, .formik-error {
+  color: #dc2626;
+  font-size: 0.9rem;
+}
+
+.success-message {
+  color: #15803d;
+  background-color: #ecfdf5;
+  border: 1px solid #bbf7d0;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
