@@ -50,7 +50,7 @@ def create_assignment():
         
     new_assignment = Assignment(
         title=data["title"],
-        description=data.get("description"),
+        description=data("description"),
         due_date=datetime.fromisoformat(data["due_date"]) if data.get("due_date") else None,
         teacher_id=data["teacher_id"]
     )

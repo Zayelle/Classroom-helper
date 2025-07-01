@@ -1,4 +1,5 @@
 from server.database.db import db
+from sqlalchemy.orm import relationship
 
 class Teacher(db.Model):
     __tablename__ = 'teachers'
@@ -8,7 +9,7 @@ class Teacher(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
 
     # One teacher can have many assignments
-    assignments = db.relationship('Assignment', backref='teacher', cascade="all, delete-orphan")
+    assignments = db.relationship('Assignment', back_populates='teacher')
 
     def __repr__(self):
         return f"<Teacher {self.name}>"

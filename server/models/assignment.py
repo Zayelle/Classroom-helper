@@ -1,4 +1,5 @@
 from server.database.db import db
+from sqlalchemy.orm import relationship
 
 class Assignment(db.Model):
     __tablename__ = 'assignments'
@@ -11,7 +12,8 @@ class Assignment(db.Model):
     teacher_id = db.Column(db.Integer, db.ForeignKey('teachers.id'), nullable=False)
 
     # One assignment can have many submissions
-    submissions = db.relationship('Submission', backref='assignment', cascade="all, delete-orphan")
+    teacher = db.relationship('Teacher', back_populates='assignments')
+    submissions = db.relationship('Submission', back_populates='assignment')
 
     def __repr__(self):
         return f"<Assignment {self.title}>"

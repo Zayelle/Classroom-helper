@@ -1,0 +1,36 @@
+# Node modules (React frontend)
+client/node_modules/
+
+# Build files
+client/dist/
+
+# Python cache and virtualenvs
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.server/
+
+# VS Code and system files
+.vscode/
+.DS_Store
+
+# Flask environment files
+server/.env
+.env
+*.sqlite3
+
+# Pipenv
+Pipfile.lock
+
+# Migrations (optional if generated)
+server/migrations/
+
+# Log files
+*.log
+
+# dotenv
+.env.*

@@ -12,7 +12,9 @@ def get_submissions():
             "grade": s.grade,
             "feedback": s.feedback,
             "student_id": s.student_id,
-            "assignment_id": s.assignment_id
+            "student_name":s.student.name if s.student else None,
+            "assignment_id": s.assignment_id,
+            "assignment_title":s.assignment.title if s.assignment else None
         } for s in submissions
     ])
 
