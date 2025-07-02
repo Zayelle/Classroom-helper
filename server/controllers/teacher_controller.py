@@ -46,3 +46,39 @@ def create_teacher():
         "name": new_teacher.name,
         "email": new_teacher.email
         }), 201
+
+# PATCH /api/teachers/<int:id> — Update a teacher
+def update_teacher(id):
+    teacher = Teacher.query.get(id)
+    if not teacher:
+        return jsonify({"error": "Teacher not found"}), 404
+
+    data = request.get_json()
+    name = data.get("name")
+    email = data.get("email")
+
+    if name:
+        teacher.name = name
+    if email:
+        if "@" not in email or "." not in email:
+            return jsonify({"error": "Invalid email format"}), 400
+        teacher.email = email
+
+    db.session.commit()
+    return jsonify({
+        "id": teacher.id,
+        "name": teacher.name,
+        "email": teacher.email
+    }), 200
+
+
+# DELETE /api/teachers/<int:id> — Delete a teacher
+def delete_teacher(id):
+    teacher = Teacher.query.get(id)
+    if not teacher:
+        return jsonify({"error": "Teacher not found"}), 404
+
+    db.session.delete(teacher)
+    db.session.commit()
+    return jsonify({"message": "Teacher deleted"}), 200
+

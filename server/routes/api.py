@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
-from server.controllers.teacher_controller import get_teachers,get_teacher, create_teacher
-from server.controllers.student_controller import get_students,get_student, create_student
+from server.controllers.teacher_controller import get_teachers,get_teacher, create_teacher,update_teacher, delete_teacher
+from server.controllers.student_controller import get_students,get_student, create_student,update_student, delete_student
 from server.controllers.assignment_controller import get_assignments, get_assignment, create_assignment, update_assignment, delete_assignment
 from server.controllers.submission_controller import get_submissions,get_submission, create_submission, update_submission, delete_submission
 
@@ -23,6 +23,14 @@ def teachers_show(id):
 def teachers_create():
     return create_teacher()
 
+@api.route('/api/teachers/<int:id>', methods=['PATCH'])
+def teachers_update(id):
+    return update_teacher(id)
+
+@api.route('/api/teachers/<int:id>', methods=['DELETE'])
+def teachers_delete(id):
+    return delete_teacher(id)
+
 # Students
 @api.route('/api/students', methods=['GET'])
 def students_index():
@@ -35,6 +43,14 @@ def students_show(id):
 @api.route('/api/students', methods=['POST'])
 def students_create():
     return create_student()
+
+@api.route('/api/students/<int:id>', methods=['PATCH'])
+def students_update(id):
+    return update_student(id)       
+
+@api.route('/api/students/<int:id>', methods=['DELETE'])
+def students_delete(id):
+    return delete_student(id)
 
 # Assignments
 @api.route('/api/assignments', methods=['GET'])

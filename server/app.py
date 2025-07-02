@@ -1,8 +1,8 @@
 from flask import Flask, send_from_directory
 from flask_migrate import Migrate
-from routes.api import api
-from database.db import db
-from config import Config
+from server.routes.api import api
+from server.database.db import db
+from server.config import Config
 from flask_cors import CORS
 from dotenv import load_dotenv
 import os

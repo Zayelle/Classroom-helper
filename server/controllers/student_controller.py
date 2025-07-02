@@ -46,3 +46,38 @@ def create_student():
         "name": new_student.name,
         "email": new_student.email
         }), 201
+
+# PATCH /api/students/<int:id> — Update student
+def update_student(id):
+    student = Student.query.get(id)
+    if not student:
+        return jsonify({"error": "Student not found"}), 404
+
+    data = request.get_json()
+    name = data.get("name")
+    email = data.get("email")
+
+    if name:
+        student.name = name
+    if email:
+        if "@" not in email or "." not in email:
+            return jsonify({"error": "Invalid email format"}), 400
+        student.email = email
+
+    db.session.commit()
+    return jsonify({
+        "id": student.id,
+        "name": student.name,
+        "email": student.email
+    }), 200
+
+
+# DELETE /api/students/<int:id> — Delete student
+def delete_student(id):
+    student = Student.query.get(id)
+    if not student:
+        return jsonify({"error": "Student not found"}), 404
+
+    db.session.delete(student)
+    db.session.commit()
+    return jsonify({"message": "Student deleted"}), 200
